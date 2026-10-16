@@ -1,0 +1,31 @@
+title: "<color:#33CCFF>Hi</color>"
+author: "Aquatic Studios"
+date: "01/01/26"
+timestamp: 0
+
+icon: ENCHANTED_BOOK
+custom-model-data: 0
+permission: ""
+auto-open: true
+footer: true
+lore: []
+
+pages:
+  - - "<gradient:#33CCFF:#0F6E9E><bold>AquaBook</bold></gradient>\n\n"
+    - "&0You are using\n&0AquaBook &8v%version%\n\n"
+    - "&0Server version\n&8%server-version%\n\n"
+    - text: "&2Spigot page &a>"
+      hover: "&dOpens the resource page"
+      url: "https://www.spigotmc.org/resources/authors/aquatic-studios.1990546/"
+    - "\n"
+    - text: "&2Discord &a>"
+      hover: "&dJoin the support server"
+      url: "https://discord.gg/cdT5g5xsVq"
+
+  - - "&0&lYour turn\n\n"
+    - "&0MiniMessage and\n&0PlaceholderAPI\n&0both work here.\n\n"
+    - text: "&2/aquabook\n&2create template &a>"
+      hover: "&dClick to run it\n&7Needs aquabook.admin"
+      command: "/aquabook create template"
+    - "\n"
+    - "&0Files live in\n&8/AquaBook/news"

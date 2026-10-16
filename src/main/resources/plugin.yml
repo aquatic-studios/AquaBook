@@ -1,0 +1,13 @@
+#                                                            Developed by Senkex
+#                                                        (Aquatic Studios @ (C) 2026)
+
+name: AquaBook
+version: '${version}'
+author: 'Senkex'
+
+api-version: '1.20'
+softdepend: [PlaceholderAPI]
+
+main: com.aquaticstudios.aquabook.AquaBook
+description: 'News books with likes, read marks and a history menu.'
+website: 'https://github.com/aquatic-studios/AquaBook'

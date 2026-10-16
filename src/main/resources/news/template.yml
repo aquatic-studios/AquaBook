@@ -1,0 +1,100 @@
+# commented example, copy it and rename the file: the file name is the id.
+# it sits behind aquabook.admin and never pops up on join, so it bothers nobody.
+
+# book title, also the name shown in the history menu
+title: "&#FFEE00Template"
+
+# shown as the book author
+author: "Aquatic Studios"
+
+# date shown in the menu, written with date-format from config.yml
+date: "01/01/26"
+
+# used to sort, newest first. 0 falls back to the date above
+# the newest entry is the one that greets players on join
+timestamp: 0
+
+# icon in the history menu
+icon: ENCHANTED_BOOK
+custom-model-data: 0
+
+# empty means everyone sees it
+permission: "aquabook.admin"
+
+# false keeps it in the history but never opens it on join
+auto-open: false
+
+# false hides the like / read / history line at the bottom
+footer: true
+
+# custom lore for the icon, empty uses the one from messages.yml
+lore: []
+
+# pages of the book, each page is a list of text chunks.
+# a chunk is either plain text or a map with one action.
+#
+# actions:      hover    text shown when the cursor is over it
+#               url      opens a link
+#               command  runs a command as the player
+#               suggest  writes the command in the chat box
+#               copy     copies text to the clipboard
+#               page     jumps to another page of this book
+#
+# placeholders: %title% %author% %date% %id% %likes% %views%
+#               %player% %version% %server-version%
+#               any PlaceholderAPI placeholder, like %player_name%
+#
+# colours:      &a legacy, &#RRGGBB hex, and MiniMessage tags from
+#               Kyori Adventure: <bold> <gradient:..> <rainbow> <#RRGGBB>
+#
+# a page fits about 19 characters per line and 14 lines, and the
+# footer eats 3 of them. use \n for a line break, \n\n for a blank one.
+pages:
+  # page 1
+  - - "&0&lPlain text\n\n"
+    - "&0Black text on the\n&0page, colours work\n&0the same as chat.\n\n"
+    - "&4Red &2green &1blue\n\n"
+    - text: "&2Go to page 2 &a>"
+      hover: "&dJumps ahead"
+      page: 2
+
+  # page 2
+  - - "&0&lLinks\n\n"
+    - text: "&2Open a website &a>"
+      hover: "&dAsks before opening"
+      url: "https://www.spigotmc.org/"
+    - "\n\n"
+    - text: "&2Run a command &a>"
+      hover: "&dRuns /aquabook menu"
+      command: "/aquabook menu"
+    - "\n\n"
+    - text: "&2Suggest a text &a>"
+      hover: "&dWrites it in the chat box"
+      suggest: "/aquabook create "
+    - "\n\n"
+    - text: "&2Copy the ip &a>"
+      hover: "&dCopies it to the clipboard"
+      copy: "play.example.com"
+
+  # page 3
+  - - "&0&lPlaceholders\n\n"
+    - "&0Hi &8%player%&0!\n"
+    - "&0Entry: &8%id%\n"
+    - "&0Date: &8%date%\n"
+    - "&0Likes: &8%likes%\n"
+    - "&0Reads: &8%views%\n"
+    - "&0Ver: &8%version%\n\n"
+    - text: "&2Go to page 4 &a>"
+      hover: "&dJumps ahead"
+      page: 4
+
+  # page 4
+  - - "&0&lMiniMessage\n\n"
+    - "<gradient:#33CCFF:#0F6E9E>gradient text</gradient>\n"
+    - "<rainbow>rainbow text</rainbow>\n\n"
+    - "&0&lPlaceholderAPI\n"
+    - "&0Hi &8%player_name%\n"
+    - "&0Ping &8%player_ping%\n\n"
+    - text: "&2Back to page 1 &a>"
+      hover: "&dJumps back"
+      page: 1

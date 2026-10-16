@@ -1,0 +1,146 @@
+# supports legacy codes (&a) and hex codes (&#33CCFF).
+# placeholders per section are listed above each block.
+
+prefix: "&#33CCFF&lAquaBook &7» &f"
+
+help:
+  - " "
+  - "&#33CCFF&lAquaBook &7- &fCommands"
+  - " "
+  - "&#33CCFF/aquabook menu &7- &fOpen the news history"
+  - "&#33CCFF/aquabook open <id> &7- &fOpen a single entry"
+  - "&#33CCFF/aquabook create template &7- &fWrite a commented example entry"
+  - "&#33CCFF/aquabook create <id> &7- &fTurn the book in your hand into news"
+  - "&#33CCFF/aquabook delete <id> &7- &fDelete an entry"
+  - "&#33CCFF/aquabook setlikes <id> <n> &7- &fSet the starting like count"
+  - "&#33CCFF/aquabook unread <id> &7- &fMark it unread again for yourself"
+  - "&#33CCFF/aquabook list &7- &fList every entry"
+  - "&#33CCFF/aquabook storage &7- &fBackend and redis stats"
+  - "&#33CCFF/aquabook reload &7- &fReload all files"
+  - " "
+
+# %backend% %redis% %channel% %entries% %rows% %tracked% %likes% %cached% %backlog%
+storage:
+  - " "
+  - "&#33CCFF&lAquaBook &7- &fStorage"
+  - " "
+  - "&#33CCFFBackend: &f%backend%"
+  - "&#33CCFFRedis: &f%redis% &7(channel &f%channel%&7)"
+  - "&#33CCFFNews loaded: &f%entries%"
+  - "&#33CCFFPlayer rows: &f%rows%"
+  - "&#33CCFFTracked entries: &f%tracked%"
+  - "&#33CCFFLikes stored: &f%likes%"
+  - "&#33CCFFCached in RAM: &f%cached%"
+  - "&#33CCFFSave queue backlog: &f%backlog%"
+  - " "
+
+list-header:
+  - " "
+  - "&#33CCFF&lAquaBook &7- &fNews &7(&f%amount%&7)"
+  - " "
+
+# %title% %author% %date% %likes% %views% %id% %state% %like-state%
+gui:
+  title: "&8AquaBook | History"
+
+  state-unread: "&#56FF00New"
+  state-read: "&aRead"
+  state-liked: "&dYou liked this &c❤"
+  state-not-liked: "&8No like yet"
+
+  item:
+    name: "&#FFEE00&l%title%"
+    lore:
+      - " "
+      - "&#54ADF4Dated: &f%date%"
+      - " "
+      - "&#FF9E08Click to read"
+    read-name: "&7&l%title%"
+    read-lore:
+      - " "
+      - "&#54ADF4Dated: &f%date%"
+      - " "
+      - "&#FF9E08Click to read it again"
+
+  navigation:
+    previous:
+      name: "&#54ADF4&lPrevious Page"
+      lore:
+        - "&7Page &f%page%&7/&f%pages%"
+    next:
+      name: "&#54ADF4&lNext Page"
+      lore:
+        - "&7Page &f%page%&7/&f%pages%"
+    close:
+      name: "&#FF2D2D&lClose"
+      lore:
+        - "&7Close the news history."
+
+# the line at the bottom of a news book: ❤ 172  ·  ✔  ·  ≡≡≡
+book:
+  # blank lines between the news text and that line
+  footer-prefix: "\n\n\n"
+
+  # spacing around each dot, a book line only fits about 19 characters
+  footer-separator: "&8   ·   "
+
+  like: "&c❤ %likes%"
+  like-hover: "&dClick to leave your like &c❤"
+  liked: "&7❤ %likes%"
+  liked-hover: "&7Thanks for your like &c❤"
+
+  read: "&9✔ Ok"
+  read-hover: "&fClick to mark it as read &9✔"
+  already-read: "&7✔"
+  already-read-hover: "&7You already marked this one as read"
+
+  menu: "&9&n≡≡≡"
+  menu-hover: "&fClick to see more news"
+
+# %unread% %total% %player%
+join:
+  hover: "&fClick to open the news history"
+  message:
+    - " "
+    - "&#33CCFF&lNEWS &7- &fYou have &#33CCFF%unread% &funread entr(y/ies)"
+    - "&7Click here to open the news history"
+    - " "
+
+messages:
+  no-permission: "%prefix%You don't have permission to do that"
+  players-only: "%prefix%Only players can run this command"
+  no-news: "%prefix%&#FFA42D[Warning] There is no news published right now"
+  news-not-found: "%prefix%&#FFA42D[Warning] There is no news entry called &f%id%"
+
+  like-added: "%prefix%Thanks for your like on &#33CCFF%title%"
+  like-removed: "%prefix%You removed your like from &#33CCFF%title%"
+  already-liked: "%prefix%You already liked &#33CCFF%title%"
+  marked-read: "%prefix%You marked &#33CCFF%title% &fas read"
+  marked-unread: "%prefix%&#33CCFF%id% &fis unread again for you"
+
+  reload: "%prefix%Reloaded config & messages &#56FF00Correctly &7(%amount% news)"
+  list-entry: "&8- &f%id% &7(%date%) &c%likes% likes &7- &f%views% reads"
+
+  gathering-stats: "%prefix%Gathering storage stats..."
+  storage-read-failed: "%prefix%&#FFA42D[Warning] Couldn't read the storage, check the console"
+
+  created: "%prefix%News entry &#56FF00%id% &fcreated, it is the one players will see on join"
+  template-created: "%prefix%Example written to &#56FF00news/%id%.yml&f, open it and edit it"
+  template-missing: "%prefix%&#FFA42D[Warning] The bundled example is missing from the jar"
+  deleted: "%prefix%News entry &#FF5555%id% &fdeleted"
+  delete-failed: "%prefix%&#FFA42D[Warning] Couldn't delete the file of &f%id%"
+  save-failed: "%prefix%&#FFA42D[Warning] Couldn't save the file: &f%error%"
+  already-exists: "%prefix%&#FFA42D[Warning] A news entry called &f%id% &#FFA42Dalready exists"
+  invalid-id: "%prefix%&#FFA42D[Warning] Invalid id, use letters, numbers, dash and underscore only"
+  invalid-number: "%prefix%&#FFA42D[Warning] That's not a valid number: &f%input%"
+  hold-book: "%prefix%&#FFA42D[Warning] Hold a written book, or run &f/aquabook create template"
+  likes-set: "%prefix%Starting likes of &#33CCFF%id% &fset to &#56FF00%amount%"
+
+  usage-open: "%prefix%Usage: &#33CCFF/aquabook open <id>"
+  usage-create: "%prefix%Usage: &#33CCFF/aquabook create <id> &7or &#33CCFF/aquabook create template"
+  usage-delete: "%prefix%Usage: &#33CCFF/aquabook delete <id>"
+  usage-setlikes: "%prefix%Usage: &#33CCFF/aquabook setlikes <id> <amount>"
+  usage-unread: "%prefix%Usage: &#33CCFF/aquabook unread <id>"
+
+# Do not change this
+version: 1

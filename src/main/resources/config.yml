@@ -1,0 +1,121 @@
+date-format: "dd/MM/yy"
+
+storage:
+  type: SQLITE # SQLITE, MYSQL, H2
+
+  mysql:
+    host: "127.0.0.1"
+    port: 3306
+    database: "aquabook"
+    username: "root"
+    password: ""
+
+    # extra parameters appended to the jdbc url, separated by &
+    properties: "useSSL=false"
+
+  # how often likes and read counts are pulled back from the database, in seconds
+  # with redis on you can raise this, the counters already arrive live
+  sync-interval-seconds: 60
+
+# only makes likes and read marks show up instantly on the other servers
+# the database stays the source of truth, without redis everything still works
+redis:
+  enabled: false
+  host: "127.0.0.1"
+  port: 6379
+  password: ""
+
+  # name of this server, empty picks a random one on startup
+  # give each server its own: lobby, survival, skyblock
+  server-id: ""
+
+gui:
+  rows: 6
+
+  # where the books are placed, in order, 21 per page
+  slots: [10, 11, 12, 13, 14, 15, 16,
+          19, 20, 21, 22, 23, 24, 25,
+          28, 29, 30, 31, 32, 33, 34]
+
+  # newest puts the most recent entry first
+  sort: newest # newest, oldest
+
+  # unread entries glow, ignored on ENCHANTED_BOOK because it glows on its own
+  glow-unread: true
+
+  item:
+    # material used once the entry has been read, empty keeps the icon from the news file
+    read-material: BOOK
+
+  navigation:
+    previous-slot: 48
+    previous-material: ARROW
+    close-slot: 49
+    close-material: BARRIER
+    next-slot: 50
+    next-material: ARROW
+
+  sounds:
+    open-book: ITEM_BOOK_PAGE_TURN
+    page: UI_BUTTON_CLICK
+
+book:
+  # default text colour inside the book, the page is light so keep it dark
+  default-color: BLACK
+
+  # ticks waited before reacting to a button inside the book
+  reopen-delay: 1
+
+  # what happens after a like or a read mark
+  after-action: CLOSE # CLOSE, MENU, REOPEN
+
+  footer:
+    enabled: true
+
+    # which page carries the like / read / history line
+    page: last # last, all
+
+    like:
+      # false means a like can never be taken back
+      allow-unlike: false
+
+      # a like also counts as reading the entry
+      marks-read: true
+
+    menu:
+      enabled: true
+
+      # only show the shortcut back to the history once the entry has been read
+      only-when-read: true
+
+join:
+  # opens whatever the player has not read yet, right on their screen
+  auto-open:
+    enabled: true
+
+    # only the newest entry greets the player, older unread ones stay in the history
+    # keep this on, otherwise creating news stacks several books on every join
+    only-latest: true
+
+    # ticks waited after joining, 1 is straight away
+    # raise it only if a slow client misses the book while it is still loading the world
+    delay: 1
+
+    # how many pending entries open at most, only used with only-latest off
+    max: 1
+
+    # ticks between one book and the next
+    gap: 40
+
+  # chat notification, fired at the same moment as the book
+  notify: true
+  delay: 1
+
+  # only warn when something is still unread
+  only-if-unread: true
+
+  click-command: "/aquabook menu"
+  sound: ENTITY_EXPERIENCE_ORB_PICKUP
+
+# Do not change this
+version: 1
